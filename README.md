@@ -60,19 +60,19 @@ The model was trained for 100 epochs on a CUDA GPU.
 
 - **Observation:** The Real data (Blue) forms specific, dense clusters, while the Synthetic data (Red) forms a large, continuous cloud that slightly over-explores the space.
 - **Interpretation (The Trade-Off):** The model shows **High Diversity** (it generates many unique samples) but **Low Fidelity**. It captures the general region of the real data but is generating many implausible points outside the boundaries of the true patient population.
-  ![UMAP Projection](assets\UMAP_Projection.png)
+  ![UMAP Projection](assets/UMAP_Projection.png)
 
 ### **5.2. Correlation Structure (Feature Dependencies)**
 
 - **Observation:** The visual comparison of the Real and Synthetic Correlation Heatmaps shows a significant difference, confirmed by the **high Correlation Drift** (the difference heatmap shows many dark squares).
 - **Interpretation:** This demonstrates a major gap: **the model failed to learn the correct relationship between features.** For example, while the Real data might show that high 'Jitter' is strongly correlated with a high 'Motor Score', the synthetic data does not replicate this strong dependency accurately. This suggests the simple MLP architecture struggles to model the true, complex web of feature interactions inherent in medical records.
-  ![Correlation Structure](assets\CorrelationStructure.png)
+  ![Correlation Structure](assets/CorrelationStructure.png)
 
 ### **5.3. Statistical Fidelity (KS-Test)**
 
 - **Observation:** The **Kolmogorov-Smirnov (KS) Test** confirmed a major fidelity issue: **$P\text{-Value} \approx 0.0000$** for all key features.
 - **Interpretation:** The synthetic and real distributions are statistically different. The simple MLP is **not expressive enough** to capture the intricate, multi-modal shapes of the real data (e.g., the complex peaks in the Motor Score distribution).
-  ![KS-Test](assets\KS-Test.png)
+  ![KS-Test](assets/KS-Test.png)
 
 ## 6. Future Work
 
