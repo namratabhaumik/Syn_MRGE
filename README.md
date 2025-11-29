@@ -40,6 +40,7 @@ I chose **DDPM** as the generative modeling framework due to its inherent stabil
 
 The model was trained for 100 epochs on a CUDA GPU.
 
+- **Optimizer:** Utilized the **Adam optimizer** with a standard learning rate of $1\text{e-}3$. Adam was chosen for its proven efficiency and stability in deep learning training environments.
 - **Training Loss:** The $\text{MSE}$ loss (the $L_{\text{simple}}$ objective) was highly stable, converging tightly around **0.98**, confirming the stability of the DDPM framework on this tabular data.
 - **Checkpointing:** Implemented a best-loss checkpointing strategy to save the highest-performing model weights (`ddpm_best_checkpoint.pt`).
 
